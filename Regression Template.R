@@ -42,7 +42,7 @@ x_grid = seq(min(ds$Level), max(ds$Level), 0.1)
 ggplot() +
   geom_point(aes(x = ds$Level, y = ds$Salary),
              color = 'red') +
-  geom_line(aes(x = x_grid, y = predict(regressor, newdata = data.frame(Level = x_grid))),
+  geom_line(aes(x = x_grid, y = predict(lr, newdata = data.frame(Level = x_grid))),
             color = 'purple') +
   ggtitle('Regression Model') +
   xlab('Level') +
