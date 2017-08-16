@@ -24,13 +24,14 @@ Y_train = sc_y.fit_transform(Y_train)"""
 
 # Fitting the Regression Model to the dataset
 # Create your regressor here
+# lr =
 
 # Predicting a new result
-y_pred = regressor.predict(6.5)
+y_pred = lr.predict(6.5)
 
 # Visualising the Regression results
 plt.scatter(X, Y, color = 'red')
-plt.plot(X, regressor.predict(X), color = 'purple')
+plt.plot(X, lr.predict(X), color = 'purple')
 plt.title('Regression Model')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
@@ -40,7 +41,7 @@ plt.show()
 X_grid = np.arange(min(X), max(X), 0.1)
 X_grid = X_grid.reshape((len(X_grid), 1))
 plt.scatter(X, Y, color = 'red')
-plt.plot(X_grid, regressor.predict(X_grid), color = 'purple')
+plt.plot(X_grid, lr.predict(X_grid), color = 'purple')
 plt.title('Regression Model')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
