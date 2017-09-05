@@ -4,6 +4,9 @@
 ds = read.csv('Social_Network_Ads.csv')
 ds = ds[, 3:5]
 
+# Encoding the target feature as factor
+ds$Purchased = factor(ds$Purchased, levels = c(0, 1))
+
 # Splitting the dataset into a training set and test set
 # install.packages('caTools')
 library(caTools)
@@ -13,16 +16,15 @@ trs = subset(ds, split == TRUE) # Training Set
 tes = subset(ds, split == FALSE) # Test Set
 
 # Feature scaling (if needed)
-trs[, 1:2] = scale(trs[, 1:2])
-tes[, 1:2] = scale(tes[, 1:2])
+trs[-3] = scale(trs[-3])
+tes[-3] = scale(tes[-3])
 
 
 # Fitting the classifier to the training set
 # Create your classifier here
 
 # Predicting the Test set Results
-pred = predict(cl, type = 'response', newdata = tes[-3])
-y_pred = ifelse(pred > 0.5, 1, 0)
+y_pred = predict(cl, newdata = tes[-3])
 
 # Making the Confusion Matrix
 cm = table(tes[, 3], y_pred)
