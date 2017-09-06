@@ -37,17 +37,16 @@ cm = table(tes[, 3], y_pred)
 
 
 # Visualising the Training set results
-install.packages('ElemStatLearn')
+# install.packages('ElemStatLearn')
 library(ElemStatLearn)
 set = trs
 X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
 X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
-prob_set = predict(cl, type = 'response', newdata = grid_set)
-y_grid = ifelse(prob_set > 0.5, 1, 0)
+y_grid = predict(cl, newdata = grid_set)
 plot(set[, -3],
-     main = 'Support Vector Machine (SVM)(Training set)',
+     main = 'Support Vector Machine (Training set)',
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
@@ -62,10 +61,8 @@ X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
 X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
-prob_set = predict(cl, type = 'response', newdata = grid_set)
-y_grid = ifelse(prob_set > 0.5, 1, 0)
-plot(set[, -3],
-     main = 'Support Vector Machine (SVM) (Test set)',
+y_grid = predict(cl, newdata = grid_set)
+plot(set[, -3], main = 'Support Vector Machine (Test set)',
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
