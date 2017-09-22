@@ -3,6 +3,8 @@
 # Importing the dataset
 ds = read.csv('Ads_CTR_Optimisation.csv')
 
+
+# Implimenting (UCB)
 N = 10000 # Number of rows in dataset
 d = 10 # Number of ads
 adSelected = integer()
@@ -33,6 +35,6 @@ for (n in 1:N) {
   totalReward = totalReward + reward
 }
 
-# Visualising the results
+# Visualising the results - Histogram
 hist(adSelected, col = 'blue', main = 'Histogram of ads selections',
      xlab = 'Ads', ylab = 'Number of times each ad was selected')

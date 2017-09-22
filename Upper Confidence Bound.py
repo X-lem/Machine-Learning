@@ -9,7 +9,7 @@ import math
 # Importing the dataset
 ds = pd.read_csv("Ads_CTR_Optimisation.csv")
 
-# Implimenting the dataset
+# Implimenting (UCB)
 N = 10000 # Number of rows in dataset
 d = 10 # Number of ads
 adSelected = []
@@ -36,7 +36,7 @@ for n in range(0, N):
     totalReward = totalReward + reward
 
 
-# Visualising the results
+# Visualising the results - Histogram
 plt.hist(adSelected)
 plt.title('Histogram of ads selections')
 plt.xlabel('Ads')
