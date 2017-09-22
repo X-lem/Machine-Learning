@@ -1,4 +1,4 @@
-# Machine Learning Template
+# Upper Confidence Bound (UCB)
 
 # Import the libraries
 import numpy as np
