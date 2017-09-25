@@ -7,7 +7,7 @@ ds = read.csv('Ads_CTR_Optimisation.csv')
 # Implimenting (UCB)
 N = 10000 # Number of rows in dataset
 d = 10 # Number of ads
-adSelected = integer()
+adDisplayed = integer()
 NumberOfSelections = integer(d)
 SumOfRewards = integer(d)
 totalReward = 0
@@ -28,7 +28,7 @@ for (n in 1:N) {
       ad = i
     }
   }
-  adSelected = append(adSelected, ad)
+  adDisplayed = append(adDisplayed, ad)
   NumberOfSelections[ad] = NumberOfSelections[ad] + 1
   reward = ds[n, ad]
   SumOfRewards[ad] = SumOfRewards[ad] + reward
@@ -36,5 +36,5 @@ for (n in 1:N) {
 }
 
 # Visualising the results - Histogram
-hist(adSelected, col = 'blue', main = 'Histogram of ads selections',
-     xlab = 'Ads', ylab = 'Number of times each ad was selected')
+hist(adDisplayed, col = 'blue', main = 'Histogram of ads selections',
+     xlab = 'Ads', ylab = 'Number of times each ad was displayed')

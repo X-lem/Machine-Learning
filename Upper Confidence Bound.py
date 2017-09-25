@@ -12,7 +12,7 @@ ds = pd.read_csv("Ads_CTR_Optimisation.csv")
 # Implimenting (UCB)
 N = 10000 # Number of rows in dataset
 d = 10 # Number of ads
-adSelected = []
+adDisplayed = []
 NumberOfSelections = [0] * d
 SumOfRewards = [0] * d
 totalReward = 0
@@ -29,7 +29,7 @@ for n in range(0, N):
         if upperBound > maxUpperBound:
             maxUpperBound = upperBound
             ad = i # Index
-    adSelected.append(ad)
+    adDisplayed.append(ad)
     NumberOfSelections[ad] = NumberOfSelections[ad] + 1
     reward = ds.values[n, ad]
     SumOfRewards[ad] = SumOfRewards[ad] + reward
@@ -37,7 +37,7 @@ for n in range(0, N):
 
 
 # Visualising the results - Histogram
-plt.hist(adSelected)
+plt.hist(adDisplayed)
 plt.title('Histogram of ads selections')
 plt.xlabel('Ads')
 plt.ylabel('Number of times each ad was selected')
