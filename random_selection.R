@@ -6,18 +6,18 @@ dataset = read.csv('Ads_CTR_Optimisation.csv')
 # Implementing Random Selection
 N = 10000
 d = 10
-adSelected = integer(0)
+adDisplayed = integer(0)
 totalReward = 0
 for (n in 1:N) {
   ad = sample(1:10, 1)
-  adSelected = append(adSelected, ad)
+  adDisplayed = append(adDisplayed, ad)
   reward = dataset[n, ad]
   totalReward = totalReward + reward
 }
 
 # Visualising the results
-hist(adSelected,
+hist(adDisplayed,
      col = 'blue',
      main = 'Histogram of ads selections',
      xlab = 'Ads',
-     ylab = 'Number of times each ad was selected')
+     ylab = 'Number of times each ad was displayed')

@@ -12,17 +12,17 @@ ds = pd.read_csv('Ads_CTR_Optimisation.csv')
 import random
 N = 10000
 d = 10
-adSelected = []
+adDisplayed = []
 totalReward = 0
 for n in range(0, N):
     ad = random.randrange(d)
-    adSelected.append(ad)
+    adDisplayed.append(ad)
     reward = ds.values[n, ad]
     totalReward = totalReward + reward
 
 # Visualising the results
-plt.hist(adSelected)
+plt.hist(adDisplayed)
 plt.title('Histogram of ads selections')
 plt.xlabel('Ads')
-plt.ylabel('Number of times each ad was selected')
+plt.ylabel('Number of times each ad was displayed')
 plt.show()
