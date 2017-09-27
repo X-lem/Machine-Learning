@@ -29,7 +29,7 @@ for i in range(0, 1000):
     
 # Creating the bag of words model
 from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features = 1500)
+cv = CountVectorizer(max_features = 1500) # Taking the top 1500 words
 X = cv.fit_transform(corpus).toarray()
 Y = ds.iloc[:, 1].values
 
