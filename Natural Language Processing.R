@@ -24,10 +24,6 @@ ds_class$Liked = ds$Liked
 
 ##### Using the Random Forest Classification #####
 
-# Importing the dataset
-ds_class = read.csv('Social_Network_Ads.csv')
-ds_class = ds_class[3:5]
-
 # Encoding the target feature as factor
 ds_class$Liked = factor(ds_class$Liked, levels = c(0, 1))
 
@@ -50,4 +46,4 @@ cl = randomForest(x = trs[-692],
 y_pred = predict(cl, newdata = tes[-692])
 
 # Making the Confusion Matrix
-cm = table(tes[, 629], y_pred)
+cm = table(tes[, 692], y_pred)
