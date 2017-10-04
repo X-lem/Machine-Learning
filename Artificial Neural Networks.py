@@ -61,15 +61,18 @@ cl.add(Dense(output_dim = 6, init = 'uniform', activation = 'relu')) # Second hi
 cl.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid')) # Output layer
 
 # Compiling the ANN
-cl.compile(optimizer = 'adam', loss = 'binary_crossentropy', metics = ['accuracy'])
+cl.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+# Fitting the ANN to the training set
+cl.fit(X_train, Y_train, batch_size = 10, epochs = 100)
+
 
 
 ##### Making the predictions
 
-
-
 # Predicint the test set results
 y_pred = cl.predict(X_test)
+y_pred = (y_pred > 0.5)
 
 # Making the confustion matrix
 from sklearn.metrics import confusion_matrix
