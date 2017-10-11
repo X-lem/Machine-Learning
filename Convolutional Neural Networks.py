@@ -15,7 +15,7 @@
 
 # Importing the Keras libraries and packages
 from keras.models import Sequential
-from keras.layers import Convolution2D
+from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense
@@ -24,10 +24,13 @@ from keras.preprocessing.image import ImageDataGenerator
 
 ##### Initializing the CNN
 cl = Sequential()
-# Convolution
-cl.add(Convolution2D(32, 3, 3, input_shape = (64, 64, 3), activation = 'relu'))
+# Convolution & Pooling
+cl.add(Conv2D(32, (3, 3), activation="relu", input_shape=(64, 64, 3)))
+cl.add(MaxPooling2D(pool_size = (2, 2)))
 
-# Pooling
+
+# Adding a second convolutional layer 
+cl.add(Conv2D(32, (3, 3), activation="relu"))
 cl.add(MaxPooling2D(pool_size = (2, 2)))
 
 # Flattening
@@ -50,7 +53,7 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
                                     zoom_range = 0.2,
                                     horizontal_flip = True)
 
-test_datagen = ImageDataGenerator(rescale=1./255)
+test_datagen = ImageDataGenerator(rescale = 1./255)
 
 # Training Set
 trs = train_datagen.flow_from_directory('CNN Dataset/training_set',
@@ -69,16 +72,3 @@ cl.fit_generator(trs,
                 epochs = 25,
                 validation_data = tes,
                 validation_steps = 2000)
-
-
-
-
-##### Making the predictions
-
-# Predicint the test set results
-y_pred = cl.predict(X_test)
-y_pred = (y_pred > 0.5) # True if larger than 0.5
-
-# Making the confustion matrix
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(Y_test, y_pred)
