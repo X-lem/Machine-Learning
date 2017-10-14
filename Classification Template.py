@@ -12,7 +12,7 @@ X = ds.iloc[:, [2, 3]].values # [Rows, Columns] : = take all
 Y = ds.iloc[:, 4].values
 
 # Splitting the dataset into a training set and test set
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.25, random_state = 0)
 
 # Feature scaling
