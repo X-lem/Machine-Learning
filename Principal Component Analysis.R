@@ -54,7 +54,7 @@ grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('PC1', 'PC2')
 y_grid = predict(cl, newdata = grid_set)
 plot(set[, -3],
-     main = 'Support Vector Machine (Training set)',
+     main = 'Principal Component Analysis (Training set)',
      xlab = 'PC1', ylab = 'PC2',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
@@ -70,7 +70,7 @@ X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('PC1', 'PC2')
 y_grid = predict(cl, newdata = grid_set)
-plot(set[, -3], main = 'Support Vector Machine (Test set)',
+plot(set[, -3], main = 'Principal Component Analysis (Test set)',
      xlab = 'PC1', ylab = 'PC2',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
