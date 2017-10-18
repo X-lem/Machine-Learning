@@ -32,9 +32,7 @@ tes = predict(pca, tes)
 tes = tes[c(2, 3, 1)]
 
 # Fitting PCA to the training set
-# install.packages('e1071')
-library(e1071)
-cl = svm(formula = CustomerSegmant ~ .,
+cl = svm(formula = Customer_Segment ~ .,
          data = trs,
          type = 'C-classification',
          kernal = 'linear')
