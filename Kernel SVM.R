@@ -21,7 +21,7 @@ tes[-3] = scale(tes[-3])
 
 
 # Fitting the classifier to the training set
-# install.packages('e1017')
+# install.packages('e1071’)
 library(e1071)
 cl = svm(formula = Purchased ~ .,
          data = trs,
