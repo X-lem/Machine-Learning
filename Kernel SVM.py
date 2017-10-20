@@ -21,7 +21,7 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-# Fitting the classifier to the Training Set
+# Fitting Kernel SVM to the Training Set
 from sklearn.svm import SVC
 cl = SVC(kernel = 'rbf', random_state = 0)
 cl.fit(X_train, Y_train)
