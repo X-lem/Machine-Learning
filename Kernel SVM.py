@@ -23,7 +23,7 @@ X_test = sc_X.transform(X_test)
 
 # Fitting the classifier to the Training Set
 from sklearn.svm import SVC
-cl = SVC(kernel = 'rbf', randome_state = 0)
+cl = SVC(kernel = 'rbf', random_state = 0)
 cl.fit(X_train, Y_train)
 
 # Predicint the test set results
